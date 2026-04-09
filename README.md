@@ -45,27 +45,22 @@ It demonstrates the use of **Object-Oriented Programming (OOP)**, **SOLID princi
 
 ## 📂 Project Structure
 
-project/
-│── controller/
-│ └── app_controller.py
-│
-│── data/
-│ └── names.csv
-│
-│── models/
-│ └── comic.py
-│
-│── services/
-│ ├── data_loader.py
-│ ├── filter_service.py
-│ ├── search_service.py
-│ ├── sort_service.py
-│ └── group_service.py
-│
-│── main.py
-│
-│── tests/
-│ └── test_services.py
+project/  
+├── controller/  
+│   └── app_controller.py  
+├── data/  
+│   └── names.csv  
+├── models/  
+│   └── comic.py  
+├── services/  
+│   ├── data_loader.py  
+│   ├── filter_service.py  
+│   ├── search_service.py  
+│   ├── sort_service.py  
+│   └── group_service.py  
+├── main.py  
+└── tests/  
+    └── test_services.py
 
 ---
 
