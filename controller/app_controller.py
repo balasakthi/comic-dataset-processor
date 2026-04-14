@@ -98,7 +98,7 @@ class AppController:
 
             for i, comic in enumerate(sorted_items[:5]):
                 print(
-                    f"{i+1}. {comic.title} | {comic.author} | {comic.get_years()} | {comic.get_genres()}"
+                    f"{i + 1}. {comic.title} | {comic.author} | {comic.get_years()} | {comic.get_genres()}"
                 )
 
             # SAVE FEATURE

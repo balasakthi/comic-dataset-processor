@@ -1,4 +1,5 @@
 from models.comic import Comic
+from services.data_loader import DataLoader
 from services.filter_service import FilterService
 from services.search_service import SearchService
 from services.sort_service import SortService
@@ -54,3 +55,37 @@ def test_sort_az():
     result = service.sort_az(comics)
 
     assert result[0].title == "Devil Hero"
+
+
+# Tests how multiple components work together
+def test_filter_then_search_then_sort():
+    comics = DataLoader().load_data("data/names.csv")
+
+    # Filter -> Search -> Sort pipeline
+    filtered = FilterService().filter_by_genre(comics, "Fantasy")
+    searched = SearchService().search_by_title(filtered, "hero")
+    sorted_results = SortService().sort_az(searched)
+
+    assert len(sorted_results) > 0
+    assert sorted_results[0].title.lower() < sorted_results[-1].title.lower()
+
+
+# Tests unusual/extreme inputs
+def test_filter_empty_list():
+    service = FilterService()
+    result = service.filter_by_genre([], "Horror")
+    assert result == []
+
+
+def test_search_none_keyword():
+    comics = sample_comics()
+    service = SearchService()
+    result = service.search_by_title(comics, None)
+    assert result == comics  # Should return all
+
+
+def test_sort_single_comic():
+    comics = [Comic("Title", "Author", "Genre", "2020", "123", "EN")]
+    service = SortService()
+    result = service.sort_az(comics)
+    assert len(result) == 1
