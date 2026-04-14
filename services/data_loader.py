@@ -4,7 +4,6 @@ from models.comic import Comic
 
 
 class DataLoader:
-
     def load_data(self, file_path):
         comics_dict = {}
 
@@ -12,14 +11,13 @@ class DataLoader:
             reader = csv.DictReader(file)
 
             for row in reader:
-                title = (
-                    (row.get("Title") or "").replace("[", "").replace("]", "").strip()
-                )
+                title = (row.get("Title") or "").strip()
 
                 if not title:
                     continue
 
-                author = self.extract_author(row.get("Name"))
+                # author = self.extract_author(row.get("Name"))
+                author = (row.get("Name") or "").strip()
                 genre = (row.get("Genre") or "").strip()
                 year = (row.get("Date of publication") or "").strip()
                 isbn = (row.get("ISBN") or "").strip() or "missing"

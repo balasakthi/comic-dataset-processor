@@ -5,7 +5,7 @@ from services.search_service import SearchService
 from services.sort_service import SortService
 
 
-# 🟢 Sample Data (Mock Data)
+# Sample Data (Mock Data)
 def sample_comics():
     return [
         Comic("Devil Hero", "Author A", "Comic; Fantasy", "2020", "123", "EN"),
@@ -14,7 +14,7 @@ def sample_comics():
     ]
 
 
-# 🟢 Test Filter
+# Test Filter
 def test_filter_by_genre():
     comics = sample_comics()
     service = FilterService()
@@ -25,7 +25,7 @@ def test_filter_by_genre():
     assert result[0].title == "Devil Hero"
 
 
-# 🟢 Test Search
+# Test Search
 def test_search_by_title():
     comics = sample_comics()
     service = SearchService()
@@ -36,7 +36,7 @@ def test_search_by_title():
     assert result[0].title == "Space War"
 
 
-# 🟢 Test Advanced Search
+# Test Advanced Search
 def test_advanced_search():
     comics = sample_comics()
     service = SearchService()
@@ -47,7 +47,7 @@ def test_advanced_search():
     assert result[0].author == "Author A"
 
 
-# 🟢 Test Sorting
+# Test Sorting
 def test_sort_az():
     comics = sample_comics()
     service = SortService()

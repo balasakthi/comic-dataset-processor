@@ -1,5 +1,4 @@
 class FilterService:
-
     def filter_by_genre(self, comics, genre):
         result = []
 

@@ -89,7 +89,7 @@ class AppController:
 
         # ---------------- DISPLAY ----------------
         for group, items in grouped.items():
-            print(f"\n📂 {group} ({len(items)} items)")
+            print(f"\n📂 {group} ({len(items)} item(s))")
 
             if sort_choice == "za":
                 sorted_items = self.sort_service.sort_za(items)
@@ -120,20 +120,21 @@ class AppController:
         )[:10]
 
         for s in top_searches:
-            print(f"- {s} ({self.search_history.count(s)} times)")
+            print(f"- {s} ({self.search_history.count(s)} time(s))")
 
         # Top Results
         print("\n🏆 Top Results:")
-        top_results = sorted(
-            self.result_counter.items(), key=lambda x: x[1], reverse=True
-        )[:10]
+        top_results = sorted(self.result_counter.items(), key=lambda x: x[1])[:10]
 
         for title, count in top_results:
-            print(f"- {title} ({count} times)")
+            print(f"- {title} ({count} time(s))")
 
         # Saved List
         print("\n💾 Saved Items:")
-        for comic in self.saved_list:
-            print(
-                f"- {comic.title} | {comic.author} | {comic.get_years()} | {comic.get_genres()}"
-            )
+        if self.saved_list:
+            for comic in self.saved_list:
+                print(
+                    f"- {comic.title} | {comic.author} | {comic.get_years()} | {comic.get_genres()}"
+                )
+        else:
+            print("- No books found")

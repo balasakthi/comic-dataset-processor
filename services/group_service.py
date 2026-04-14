@@ -1,5 +1,4 @@
 class GroupService:
-
     def group_by_author(self, comics):
         grouped = {}
 
